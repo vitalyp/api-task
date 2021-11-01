@@ -1,0 +1,19 @@
+# Type 'Lint' (5):
+Lint/BlockAlignment:
+  EnforcedStyleAlignWith: start_of_block
+
+Lint/ConditionPosition:
+  Enabled: true
+
+Lint/DefEndAlignment:
+  Enabled: true
+  EnforcedStyleAlignWith: start_of_line
+  AutoCorrect: false
+
+Lint/EndAlignment:
+  Enabled: true
+  EnforcedStyleAlignWith: variable
+  AutoCorrect: false
+
+Lint/UnneededDisable:
+  Enabled: true

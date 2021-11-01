@@ -1,0 +1,13 @@
+# Type 'Performance' (3):
+Performance/CaseWhenSplat:
+  Enabled: true
+  AutoCorrect: true
+
+Performance/EndWith:
+  Enabled: true
+  AutoCorrect: true
+
+Performance/FlatMap:
+  Enabled: true
+  EnabledForFlattenWithoutParams: true
+  AutoCorrect: false

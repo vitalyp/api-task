@@ -1,0 +1,16 @@
+# Backup option to get Postgres running at local host or using Docker Playground
+version: '3.1'
+services:
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: example
+      POSTGRES_DB: api-task-development
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:80 # ? 5432:80

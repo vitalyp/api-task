@@ -1,0 +1,41 @@
+# Type 'Layout' (12):
+Layout/AlignParameters:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/EmptyLineBetweenDefs:
+  AllowAdjacentOneLineDefs: true
+
+Layout/EmptyLinesAroundBlockBody:
+  Enabled: false # FIXME: later. enable for more than 3 lines
+  EnforcedStyle: empty_lines
+
+Layout/FirstArrayElementLineBreak:
+  Enabled: true
+
+Layout/FirstHashElementLineBreak:
+  Enabled: true
+
+Layout/FirstMethodArgumentLineBreak:
+  Enabled: true
+
+Layout/FirstMethodParameterLineBreak:
+  Enabled: true
+
+Layout/FirstParameterIndentation:
+  EnforcedStyle: consistent #special_for_inner_method_call_in_parentheses
+
+Layout/IndentArray:
+  EnforcedStyle: consistent # special_inside_parentheses
+
+Layout/IndentHash:
+  EnforcedStyle: consistent # special_inside_parentheses
+
+Layout/MultilineAssignmentLayout:
+  Enabled: true
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/LineLength:
+  Max: 100
+  IgnoreCopDirectives: true
