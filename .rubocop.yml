@@ -1,6 +1,17 @@
 AllCops:
   TargetRubyVersion: 2.7
-  NewCops: enable
+  NewCops: disable
+  Exclude:
+    - 'db/schema.rb'
+    - 'spec/**/*'
 
 require: rubocop-rake
 
+Style/Documentation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20

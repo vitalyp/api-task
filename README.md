@@ -11,28 +11,32 @@ api-task
 - RACK_ENV=test bundle exec rake db:create db:migrate
 - RACK_ENV=development bundle exec rake db:create db:migrate database:reset
 
-### Rake database tasks
+### Rake database tasks (RACK_ENV=development/test)
 
-    database:reset
-
+    database:reset - Drops database and recreates initial database structure
+    database:load  - Load database with amount of data
        
 ### Checks
+
 - bundle exec rspec spec
 - bundle exec rubocop
-- bundle exec brakeman
 
-### docker-compose-postgres.yml
-    docker-compose -f docker-compose-postgres.yml up
-    ssh uusseerr@hhoosstt.labs.play-with-docker.com
-    docker run -d -p 8080:80 nginx
-   
-> .
->
->
->
-> todo .
->
->
->
-> .
-  
+### Setup
+
+    RACK_ENV=development bundle exec rake db:create
+    RACK_ENV=test bundle exec rake db:create
+
+### Run server
+With live reload:
+    
+    shotgun
+    
+Standard:
+    
+    rackup
+
+### Endpoints
+
+Create post:
+
+    curl -i -X POST -H "Content-Type: application/json" -d'{"title":"Post title","content":"Post content","login":"user1","ip":"127.0.0.1"}' http://127.0.0.1:9393/posts 

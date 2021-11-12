@@ -6,7 +6,7 @@ class CreateRatings < ActiveRecord::Migration[5.2]
       t.belongs_to :user, foreign_key: true, index: true
       t.belongs_to :post, foreign_key: true, index: true
 
-      t.string :content
+      t.integer :points, nil: false
 
       t.timestamps
     end

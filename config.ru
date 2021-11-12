@@ -1,15 +1,12 @@
 # frozen_string_literal: true
 
 require './config/environment'
+require 'sinatra'
+require 'sinatra/base'
+require 'sinatra/activerecord'
 
 raise 'Migrations are pending' if ActiveRecord::Base.connection.migration_context.needs_migration?
 
-require 'sinatra/activerecord'
+require './app'
 
-require_all 'app'
-
-map('/')      { run ApplicationController }
-map('/posts') { run PostsController }
-map('/users') { run UsersController }
-
-run ApplicationController
+run App

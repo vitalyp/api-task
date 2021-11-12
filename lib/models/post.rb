@@ -2,7 +2,8 @@
 
 class Post < ActiveRecord::Base
   belongs_to :user
-  has_one :rating
+  has_many :ratings
 
+  validates :user, presence: true
   validates :title, presence: true
 end

@@ -1,8 +1,14 @@
 # frozen_string_literal: true
 
 ENV['SINATRA_ENV'] = 'test'
+ENV['RACK_ENV'] = 'test'
+ENV['APP_ENV'] = 'test'
 
 require_relative '../config/environment'
+
+require_all './lib'
+require 'factory_bot'
+
 require 'rack/test'
 require 'database_cleaner/active_record'
 
@@ -19,6 +25,11 @@ RSpec.configure do |config|
   config.filter_run :focus
   config.include Rack::Test::Methods
   config.order = 'default'
+
+  config.include FactoryBot::Syntax::Methods
+  config.before(:suite) do
+    FactoryBot.find_definitions
+  end
 
   config.before do
     DatabaseCleaner.clean
