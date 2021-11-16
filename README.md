@@ -35,8 +35,6 @@ Standard:
     
     rackup
 
-### Endpoints
+### Run rake populate task
 
-Create post:
-
-    curl -i -X POST -H "Content-Type: application/json" -d'{"title":"Post title","content":"Post content","login":"user1","ip":"127.0.0.1"}' http://127.0.0.1:9393/posts 
+    rake seed:load\["http://127.0.0.1:9393"\]
