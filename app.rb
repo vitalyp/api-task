@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
-# api.rb
 require_all 'lib'
+
+VERSION = '1.0.1'
 
 class App < Sinatra::Base
   get '/' do
     {
       application: 'API TASK',
-      version: '1.0.0',
+      version: VERSION,
       total_users_count: User.count,
       total_posts_count: Post.count
     }.to_json
@@ -20,11 +21,26 @@ class App < Sinatra::Base
     )
   end
 
-  # Create Post.
+  # Get Posts
+  # curl -i -X GET -H "Content-Type: application/json" http://127.0.0.1:9393/posts
+  get '/posts' do
+    content_type :json
+    status 200
+    Post.all.to_json(only: [ :id, :title, :content ])
+  end
+
+  # Create Post
+  # curl -i -X POST -H "Content-Type: application/json" -d'{"login":"user","title":"Title","content":"Content","ip":"127.0.0.1"}' http://127.0.0.1:9393/posts
   # params: login, title, content, ip
   post '/posts' do
-    result = PostCreateService.new(JSON.parse(request.body.read)).perform
+    result = nil
+    t = Benchmark.ms {
+      result = PostCreateService.new(JSON.parse(request.body.read)).perform
+    }
+    puts "Processed request in (ms): #{t}"
+
     content_type :json
+
     if result.errors.any?
       status 400
       result.errors.to_json
