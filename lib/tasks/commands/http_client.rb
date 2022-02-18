@@ -7,7 +7,7 @@ require 'pry'
   require 'require_all';require_all './lib/tasks/commands';require 'dotenv';Dotenv.load(".env.local");
 =end
 
-module ApiTask
+module TinyApiClient
   # HttpClient performs fast HTTP requests through persisted connection with destination server.
   # Using:
   #   client = HttpClient.new('127.0.0.1:3000')    # => params String: hostname or ip address (:port)
