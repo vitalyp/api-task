@@ -1,4 +1,4 @@
-api-task
+Try to implement Sinatra - based Backend API
 ========
 ### Prerequisites
     Ruby - 2.7.3
