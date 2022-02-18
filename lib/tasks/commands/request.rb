@@ -2,7 +2,7 @@
 
 require 'active_support/inflector'
 
-module ApiTask
+module TinyApiClient
   # Wrapper around net/http Net::HTTPRequest
   class Request
     HTTP_REQUEST_CLASSES = %w(
