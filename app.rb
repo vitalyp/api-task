@@ -2,12 +2,18 @@
 
 require_all 'lib'
 
-VERSION = '1.0.1'
+VERSION = '1.0.2'
+
+# Users, Posts and Ratings API
+# GET  =>  /posts
+# POST =>  /posts  +[:login, :title, :content]
+# POST =>  /post/:post_id/rate/:point
+
 
 class App < Sinatra::Base
   get '/' do
     {
-      application: 'API TASK',
+      application: 'SINATRA BACKEND API',
       version: VERSION,
       total_users_count: User.count,
       total_posts_count: Post.count
@@ -59,28 +65,5 @@ class App < Sinatra::Base
     content_type :json
     status 200
     average_rate
-  end
-
-  # Get top N posts within average rating
-  # 1. get average rating
-  # 2. get top N posts - what is TOP posts please explain with examples please
-  get '/average/:num' do
-    average = Rating.average(:points)
-
-    content_type :json
-    status 200
-    average
-  end
-
-  get '/multi_ip' do
-    ips = Post.select(:ip).group(:ip).having("count(*) > 1")
-    content_type :json
-    status 200
-
-    ips.collect do |ip|
-      user_ids = Post.where(ip: ip).pluck(:user_id)
-      logins = User.where(id: user_ids).pluck(:login)
-      { ip: ip, logins: logins }
-    end.to_json
   end
 end
